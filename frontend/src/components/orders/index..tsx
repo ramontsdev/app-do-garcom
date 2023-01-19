@@ -3,6 +3,7 @@ import socketIo from 'socket.io-client';
 
 import { Order } from '../../types/order';
 import { api } from '../../utils/api';
+import { env } from '../../utils/environment-variables';
 import { OrdersBoard } from '../orders-board';
 import { Container } from './styles';
 
@@ -10,7 +11,7 @@ export function Orders() {
   const [orders, setOrders] = useState<Order[]>([]);
 
   useEffect(() => {
-    const socket = socketIo('http://localhost:3001', {
+    const socket = socketIo(env.apiUrl, {
       transports: ['websocket'],
     });
 

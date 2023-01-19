@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { FlatList } from 'react-native';
 
 import { Product } from '../../types/product';
+import { env } from '../../utils/environment-variables';
 import { formatCurrency } from '../../utils/format-currency';
 import { PlusCircle } from '../Icons/PlusCircle';
 import { ProductModal } from '../product-modal';
@@ -44,7 +45,7 @@ export function Menu({ onAddToCart, products }: MenuProps) {
         renderItem={({ item: product }) => (
           <ProductContainer onPress={() => handleOpenModal(product)}>
             <ProductImage source={{
-              uri: `http://192.168.0.100:3001/uploads/${product.imagePath}`
+              uri: `${env.apiUrl}/uploads/${product.imagePath}`
             }} />
 
             <ProductDetails>

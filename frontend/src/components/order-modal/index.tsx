@@ -3,6 +3,7 @@ import { Actions, ModalBody, OrderDetails, Overlay } from './styles';
 import { useEffect } from 'react';
 import closeIcon from '../../assets/images/close-icon.svg';
 import { Order } from '../../types/order';
+import { env } from '../../utils/environment-variables';
 import { formatCurrency } from '../../utils/format-currency';
 
 type OrderModalProps = {
@@ -70,7 +71,7 @@ export function OrderModal({ visible, order, onClose, onCancelOrder, isLoading, 
             {order.products.map(({ _id, product, quantity }) => (
               <div className="item" key={_id}>
                 <img
-                  src={`http://localhost:3001/uploads/${product.imagePath}`}
+                  src={`${env.apiUrl}/uploads/${product.imagePath}`}
                   alt={product.name}
                   width={'56'}
                   height={'28.51'}

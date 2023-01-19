@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { FlatList, Modal } from 'react-native';
 import { Product } from '../../types/product';
+import { env } from '../../utils/environment-variables';
 import { formatCurrency } from '../../utils/format-currency';
 import { Button } from '../button';
 import { Close } from '../Icons/Close';
@@ -35,7 +36,7 @@ export function ProductModal({ visible, onClose, product, onAddToCart }: Product
     >
       <Image
         source={{
-          uri: `http://192.168.0.100:3001/uploads/${product.imagePath}`
+          uri: `${env.apiUrl}/uploads/${product.imagePath}`
         }}
       >
         <CloseButton onPress={onClose}>
